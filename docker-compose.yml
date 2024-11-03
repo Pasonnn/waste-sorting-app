@@ -1,0 +1,29 @@
+version: '3'
+services:
+  gateway:
+    build: ./gateway
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=development
+      - JWT_SECRET=${JWT_SECRET}
+      - DATABASE_URL=${DATABASE_URL}
+      - PORT=4000
+
+  category:
+    build: ./microservices/category
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=${DATABASE_URL}
+
+  # Repeat for other services like challenge, item, user
+
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
