@@ -12,12 +12,16 @@ services:
 
   category:
     build: ./microservices/category
+    ports:
+      - "4001:4001"
     environment:
       - NODE_ENV=development
       - DATABASE_URL=${DATABASE_URL}
   
   challenge:
     build: ./microservices/challenge
+    ports:
+      - "4002:4002"
     environment:
       - NODE_ENV=development
       - DATABASE_URL=${DATABASE_URL}
@@ -28,11 +32,17 @@ services:
       - NODE_ENV=development
       - DATABASE_URL=${DATABASE_URL}
     
+    
   user:
     build: ./microservices/user
+    container_name: users
+    ports:
+      - "4004:4004"
     environment:
       - NODE_ENV=development
       - DATABASE_URL=${DATABASE_URL}
+    depends_on:
+      - mongodb
 
   mongodb:
     image: mongo
