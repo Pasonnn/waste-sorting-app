@@ -15,8 +15,24 @@ services:
     environment:
       - NODE_ENV=development
       - DATABASE_URL=${DATABASE_URL}
+  
+  challenge:
+    build: ./microservices/challenge
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=${DATABASE_URL}
 
-  # Repeat for other services like challenge, item, user
+  item:
+    build: ./microservices/item
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=${DATABASE_URL}
+    
+  user:
+    build: ./microservices/user
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=${DATABASE_URL}
 
   mongodb:
     image: mongo
