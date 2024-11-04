@@ -4,7 +4,7 @@
   "description": "User management service handling registration, login, and profile access",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "node app.js",
     "dev": "nodemon app.js",
     "test": "echo \"No tests specified\" && exit 0"
   },
