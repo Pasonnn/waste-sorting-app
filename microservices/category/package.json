@@ -1,7 +1,7 @@
 {
-    "name": "service-name",
+    "name": "waste-sorting-app-category",
     "version": "1.0.0",
-    "description": "Description of the service",
+    "description": "A microservice for managing waste categories such as organic, recyclable, and hazardous in the waste sorting app.",
     "main": "app.js",
     "scripts": {
       "start": "node app.js"
