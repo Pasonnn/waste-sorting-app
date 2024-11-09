@@ -3,16 +3,16 @@ const mongoose = require('mongoose');
 const challengeSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: true,
+        required: "Title cannot be blank",
         trim: true,
     },
     description: {
         type: String,
-        required: true,
+        required: "Description cannot be blank",
     },
     points: {
         type: Number,
-        required: true,
+        required: "Point cannot be blank",
         default: 0,
     },
     status: {

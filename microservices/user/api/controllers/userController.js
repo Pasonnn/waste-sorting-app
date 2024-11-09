@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');         // Import JSON Web Token for authen
 // Register a new user
 exports.register = async (req, res) => {
   try {
+    console.log("Hello");
     const { name, email, password } = req.body; // Extract user details from request
 
     // Check if user already exists in the database

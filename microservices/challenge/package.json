@@ -1,14 +1,17 @@
 {
-    "name": "service-name",
+    "name": "challenge-name",
     "version": "1.0.0",
-    "description": "Description of the service",
+    "description": "Challenge microservice for managing and handling waste sorting challenges, including creation, tracking, and scoring of challenges to encourage sustainable waste management practices.",
     "main": "app.js",
     "scripts": {
-      "start": "node app.js"
+        "start": "nodemon app.js"
     },
     "dependencies": {
-      "express": "^4.17.1",
-      "mongoose": "^5.10.0"
+        "dotenv": "^16.4.5",
+        "express": "^4.21.1",
+        "mongoose": "^5.13.22"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.22"
     }
-  }
-  
+}
