@@ -1,5 +1,3 @@
-// userModel.js
-
 const mongoose = require('mongoose'); // Import Mongoose library to work with MongoDB
 const Schema = mongoose.Schema;       // Define Schema constructor from Mongoose
 
@@ -18,7 +16,7 @@ const userSchema = new Schema({
     type: String,                       // Password field as a string
     required: 'Password cannot be blank'// Validation message if password is missing
   }
-});
+}, {timestamps: true});
 
 // Export the User model based on the defined schema
 module.exports = mongoose.model('User', userSchema);
