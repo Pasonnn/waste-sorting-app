@@ -11,12 +11,12 @@ router.post('/create', challengeController.createChallenge);
 router.get('/all', challengeController.getAllChallenges);
 
 // Route to get a single challenge by ID
-router.get('/find', challengeController.getChallengeById);
+router.get('/:id', challengeController.getChallengeById);
 
 // Route to update a challenge by ID
-router.put('/update', challengeController.updateChallenge);
+router.put('/:id', challengeController.updateChallenge);
 
 // Route to delete a challenge by ID
-router.delete('/delete', challengeController.deleteChallenge);
+router.delete('/:id', challengeController.deleteChallenge);
 
 module.exports = router;

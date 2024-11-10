@@ -16,7 +16,7 @@ exports.createChallenge = async (req, res) => {
         res.status(201).json({ message: "Challenge created successfully" });
     }
     catch (error) {
-        res.status(500).json({ error: 'Failed to create challenge '}) // Handle create error
+        res.status(500).json({ error: 'Failed to create challenge', details: error.message}) // Handle create error
     }
 }
 

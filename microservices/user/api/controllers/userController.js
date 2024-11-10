@@ -5,15 +5,12 @@ const jwt = require('jsonwebtoken');         // Import JSON Web Token for authen
 // Register a new user
 exports.register = async (req, res) => {
   try {
-    console.log("Hello");
     const { name, email, password } = req.body; // Extract user details from request
-
     // Check if user already exists in the database
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.status(400).json({ error: 'User already exists' });
+      return res.status(400).json({ error: 'User already exists'  });
     }
-
     // Hash the user's password for security
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -23,7 +20,7 @@ exports.register = async (req, res) => {
 
     res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to register user' }); // Handle registration errors
+    res.status(500).json({ error: 'Failed to register user', details: error.message }); // Handle registration errors
   }
 };
 
@@ -31,7 +28,6 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body; // Extract login credentials
-
     // Find the user by email
     const user = await User.findOne({ email });
     if (!user) {
@@ -49,7 +45,7 @@ exports.login = async (req, res) => {
 
     res.json({ message: 'Login successful', token });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to login user' }); // Handle login errors
+    res.status(500).json({ error: 'Failed to login user', details: error.message }); // Handle login errors
   }
 };
 
@@ -66,6 +62,6 @@ exports.getProfile = async (req, res) => {
 
     res.json(user); // Send user profile data as JSON
   } catch (error) {
-    res.status(500).json({ error: 'Failed to get user profile' }); // Handle profile retrieval errors
+    res.status(500).json({ error: 'Failed to get user profile' , details: error.message}); // Handle profile retrieval errors
   }
 };
