@@ -14,7 +14,7 @@ exports.createItem = async (req, res) => {
 // Get all items
 exports.getAllItems = async (req, res) => {
     try {
-        const items = await Item.find().populate('category');
+        const items = await Item.find();
         res.status(200).json(items);
     } catch (error) {
         res.status(500).json({ error: 'Error retrieving items', details: error.message });
@@ -24,7 +24,7 @@ exports.getAllItems = async (req, res) => {
 // Get a single item by ID
 exports.getItemById = async (req, res) => {
     try {
-        const item = await Item.findById(req.params.id).populate('category');
+        const item = await Item.findById(req.params.id);
         if (!item) {
             return res.status(404).json({ error: 'Item not found' });
         }
