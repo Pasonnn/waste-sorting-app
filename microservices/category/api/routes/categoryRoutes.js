@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const categoryController = require('../controllers/categoryController');
-const { authenticateUser } = require('../middlewares/authMiddleware'); // Correct import
+const { authenticateUser } = require('../middlewares/authMiddleware');
 
 // Route to create a new category
 router.post('/create', authenticateUser, categoryController.createCategory);
