@@ -5,20 +5,15 @@ const Challenge = require('../models/challengeModel');
 // Create a new challenge
 exports.createChallenge = async (req, res) => {
     try {
-        const {title, description, points, status } = req.body; // Extract create challenge credentials
-        const existingChallenge = await Challenge.findOne({ id });
-        if (existingChallenge) {
-            return res.status(400).json({ error: 'Challenge title already exists '});
-        }
-        const challenge = new Challenge({id, title, description, points, status});
-        await challenge.save();
+        const { title, description, points, status } = req.body;
+        const challenge = new Challenge({ title, description, points, status });
+        const savedChallenge = await challenge.save();
+        res.status(201).json(savedChallenge);
+    } catch (error) {
+        res.status(400).json({ error: 'Failed to create challenge', details: error.message });
+    }
+};
 
-        res.status(201).json({ message: "Challenge created successfully" });
-    }
-    catch (error) {
-        res.status(500).json({ error: 'Failed to create challenge', details: error.message}) // Handle create error
-    }
-}
 
 // Get all challenges
 exports.getAllChallenges = async (req, res) => {

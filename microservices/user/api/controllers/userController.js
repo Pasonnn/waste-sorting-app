@@ -52,16 +52,16 @@ exports.login = async (req, res) => {
 // Get user profile
 exports.getProfile = async (req, res) => {
   try {
-    const userId = req.user.userId; // Extract user ID from request (assumes user is authenticated)
+      const userId = req.user.userId; // Extract user ID from req.user set by auth middleware
 
-    // Retrieve user data by ID, excluding the password field
-    const user = await User.findById(userId).select('-password');
-    if (!user) {
-      return res.status(404).json({ error: 'User not found' });
-    }
+      // Retrieve user data by ID, excluding the password field
+      const user = await User.findById(userId).select('-password');
+      if (!user) {
+          return res.status(404).json({ error: 'User not found' });
+      }
 
-    res.json(user); // Send user profile data as JSON
+      res.json(user); // Send user profile data as JSON
   } catch (error) {
-    res.status(500).json({ error: 'Failed to get user profile' , details: error.message}); // Handle profile retrieval errors
+      res.status(500).json({ error: 'Failed to get user profile', details: error.message }); // Handle profile retrieval errors
   }
 };
