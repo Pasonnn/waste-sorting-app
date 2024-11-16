@@ -4,8 +4,8 @@
   "description": "API Gateway for microservices",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon src/app.js",
-    "dev": "nodemon src/app.js"
+    "start": "nodemon app.js",
+    "dev": "nodemon app.js"
   },
   "dependencies": {
     "axios": "^1.7.7",
