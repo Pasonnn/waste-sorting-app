@@ -1,17 +1,20 @@
-# Dockerfile for a Node.js service
+# Use Node.js base image
+FROM node:16
 
-# Use Node.js version 14 as the base image
-FROM node:14
-
-# Set the working directory in the container
+# Set working directory
 WORKDIR /app
 
-# Copy dependency files and install dependencies
+# Copy package files
 COPY package*.json ./
+
+# Install dependencies
 RUN npm install
 
-# Copy the rest of the application files
+# Copy all files to the container
 COPY . .
 
-# Start the Node.js application
-CMD ["npm", "start"]
+# Expose port
+EXPOSE 4000
+
+# Start the application
+CMD ["node", "src/app.js"]
