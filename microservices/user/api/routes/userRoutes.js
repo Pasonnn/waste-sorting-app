@@ -3,7 +3,7 @@
 const express = require('express');         // Import Express to set up routing
 const router = express.Router();            // Create a new router instance
 const userController = require('../controllers/userController'); // Import the user controller
-const { authenticateUser } = require('../middlewares/authMiddleware');
+const { authenticateUser } = require('../middlewares/authMiddlewareGateway');
 
 // Route for user registration - calls the register function in userController
 router.post('/register', userController.register);

@@ -10,7 +10,7 @@ services:
       - CHALLENGE_SERVICE_URL=http://challenges:4002/challenges
       - ITEM_SERVICE_URL=http://items:4003/items
       - NODE_ENV=development
-      - JWT_SECRET=your_jwt_secret_here
+      - JWT_SECRET=0x3f1fc384bd71a64cb031983fac059c9e452ad2477c04c2f6f2ce4b7951a6e8a4
       - DATABASE_URL=mongodb://mongodb:27017/your_database_name
       - PORT=4000
     depends_on:
