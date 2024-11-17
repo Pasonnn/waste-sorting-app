@@ -5,10 +5,19 @@ services:
     ports:
       - "4000:4000"
     environment:
+      - USER_SERVICE_URL=http://users:4004/users
+      - CATEGORY_SERVICE_URL=http://categories:4001/categories
+      - CHALLENGE_SERVICE_URL=http://challenges:4002/challenges
+      - ITEM_SERVICE_URL=http://items:4003/items
       - NODE_ENV=development
-      - JWT_SECRET=${JWT_SECRET}
-      - DATABASE_URL=${DATABASE_URL}
+      - JWT_SECRET=your_jwt_secret_here
+      - DATABASE_URL=mongodb://mongodb:27017/your_database_name
       - PORT=4000
+    depends_on:
+      - user
+      - category
+      - challenge
+      - item
 
   category:
     build: ./microservices/category
@@ -17,10 +26,10 @@ services:
       - "4001:4001"
     environment:
       - NODE_ENV=development
-      - DATABASE_URL=${DATABASE_URL}
+      - DATABASE_URL=mongodb://mongodb:27017/your_database_name
     depends_on:
       - mongodb
-  
+
   challenge:
     build: ./microservices/challenge
     container_name: challenges
@@ -28,7 +37,7 @@ services:
       - "4002:4002"
     environment:
       - NODE_ENV=development
-      - DATABASE_URL=${DATABASE_URL}
+      - DATABASE_URL=mongodb://mongodb:27017/your_database_name
     depends_on:
       - mongodb
 
@@ -39,11 +48,10 @@ services:
       - "4003:4003"
     environment:
       - NODE_ENV=development
-      - DATABASE_URL=${DATABASE_URL}
+      - DATABASE_URL=mongodb://mongodb:27017/your_database_name
     depends_on:
       - mongodb
-    
-    
+
   user:
     build: ./microservices/user
     container_name: users
@@ -51,12 +59,13 @@ services:
       - "4004:4004"
     environment:
       - NODE_ENV=development
-      - DATABASE_URL=${DATABASE_URL}
+      - DATABASE_URL=mongodb://mongodb:27017/your_database_name
     depends_on:
       - mongodb
 
   mongodb:
     image: mongo
+    container_name: mongodb
     ports:
       - "27017:27017"
     volumes:
