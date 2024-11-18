@@ -4,7 +4,7 @@
     "description": "Description of the service",
     "main": "app.js",
     "scripts": {
-      "start": "node app.js"
+      "start": "nodemon app.js"
     },
     "dependencies": {
       "express": "^4.17.1",
