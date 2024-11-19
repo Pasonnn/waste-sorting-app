@@ -1,6 +1,20 @@
 {
   "dependencies": {
     "bcrypt": "^5.1.1",
-    "dotenv": "^16.4.5"
-  }
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "mongoose": "^8.8.1",
+    "nodemon": "^3.1.7"
+  },
+  "name": "waste-sorting-app",
+  "version": "1.0.0",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

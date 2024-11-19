@@ -1,0 +1,409 @@
+{
+    "info": {
+        "name": "Microservices Test Collection",
+        "description": "Test all routes for User, Category, Challenge, and Item services",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "User Service",
+            "item": [
+                {
+                    "name": "Register User",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:4000/users/register",
+                            "host": ["localhost"],
+                            "port": "4000",
+                            "path": ["users", "register"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"username\": \"JohnDoe\",\n  \"password\": \"securepassword123\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Login User",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:4000/users/login",
+                            "host": ["localhost"],
+                            "port": "4000",
+                            "path": ["users", "login"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"username\": \"JohnDoe\",\n  \"password\": \"securepassword123\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Get User Profile",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:4000/users/profile",
+                            "host": ["localhost"],
+                            "port": "4000",
+                            "path": ["users", "profile"]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Category Service",
+            "item": [
+                {
+                    "name": "Create Category",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:4000/categories/create",
+                            "host": ["localhost"],
+                            "port": "4000",
+                            "path": ["categories", "create"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"Recyclables\",\n  \"description\": \"Waste that can be recycled\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Get All Categories",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:4000/categories/all",
+                            "host": ["localhost"],
+                            "port": "4000",
+                            "path": ["categories", "all"]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Category by ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:4000/categories/{{categoryId}}",
+                            "host": ["localhost"],
+                            "port": "4000",
+                            "path": ["categories", "{{categoryId}}"]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Category",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:4000/categories/{{categoryId}}",
+                            "host": ["localhost"],
+                            "port": "4000",
+                            "path": ["categories", "{{categoryId}}"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"Updated Category\",\n  \"description\": \"Updated description\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Category",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:4000/categories/{{categoryId}}",
+                            "host": ["localhost"],
+                            "port": "4000",
+                            "path": ["categories", "{{categoryId}}"]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Challenge Service",
+            "item": [
+                {
+                    "name": "Create Challenge",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:4000/challenges/create",
+                            "host": ["localhost"],
+                            "port": "4000",
+                            "path": ["challenges", "create"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"title\": \"Recycling Awareness\",\n  \"description\": \"Raise awareness about recycling\",\n  \"points\": 100\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Get All Challenges",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:4000/challenges/all",
+                            "host": ["localhost"],
+                            "port": "4000",
+                            "path": ["challenges", "all"]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Challenge by ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:4000/challenges/{{challengeId}}",
+                            "host": ["localhost"],
+                            "port": "4000",
+                            "path": ["challenges", "{{challengeId}}"]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Challenge",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:4000/challenges/{{challengeId}}",
+                            "host": ["localhost"],
+                            "port": "4000",
+                            "path": ["challenges", "{{challengeId}}"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"title\": \"Updated Challenge\",\n  \"description\": \"Updated description\",\n  \"points\": 200\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Challenge",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:4000/challenges/{{challengeId}}",
+                            "host": ["localhost"],
+                            "port": "4000",
+                            "path": ["challenges", "{{challengeId}}"]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Item Service",
+            "item": [
+                {
+                    "name": "Create Item",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:4000/items/create",
+                            "host": ["localhost"],
+                            "port": "4000",
+                            "path": ["items", "create"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"Plastic Bottle\",\n  \"categoryId\": \"{{categoryId}}\",\n  \"description\": \"A bottle made of plastic\",\n  \"recyclable\": true\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Get All Items",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:4000/items/all",
+                            "host": ["localhost"],
+                            "port": "4000",
+                            "path": ["items", "all"]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Item by ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:4000/items/{{itemId}}",
+                            "host": ["localhost"],
+                            "port": "4000",
+                            "path": ["items", "{{itemId}}"]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Item",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:4000/items/{{itemId}}",
+                            "host": ["localhost"],
+                            "port": "4000",
+                            "path": ["items", "{{itemId}}"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"Updated Item\",\n  \"description\": \"Updated description\",\n  \"recyclable\": false\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Item",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:4000/items/{{itemId}}",
+                            "host": ["localhost"],
+                            "port": "4000",
+                            "path": ["items", "{{itemId}}"]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
